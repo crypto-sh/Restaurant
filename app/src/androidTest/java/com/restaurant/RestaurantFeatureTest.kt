@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
+import com.restaurant.base.BaseUiTest
 import com.restaurant.ui.RestaurantActivity
 import junit.framework.TestCase.assertNotNull
 import org.hamcrest.CoreMatchers.allOf

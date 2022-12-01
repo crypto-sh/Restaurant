@@ -1,9 +1,6 @@
 package com.restaurant.ui.viewModel
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.restaurant.core.base.BaseViewModel
 import com.restaurant.core.dto.Restaurant
 import com.restaurant.core.repository.RestaurantRepository
@@ -39,4 +36,19 @@ class RestaurantViewModel(
     fun observableRestaurants(): LiveData<List<Restaurant>> = _list
 
     fun observableError(): LiveData<Throwable> = _error
+}
+
+
+class RestaurantViewModelFactory(
+    private val repository: RestaurantRepository
+) : AbstractSavedStateViewModelFactory() {
+    override fun <T : ViewModel> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
+        @Suppress("UNCHECKED_CAST")
+        return RestaurantViewModel(repository) as T
+    }
+
 }

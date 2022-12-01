@@ -2,6 +2,7 @@ package com.restaurant
 
 import com.restaurant.base.BaseUnitTest
 import com.restaurant.core.repository.RestaurantRepository
+import com.restaurant.core.repository.impl.RestaurantRepositoryImpl
 import com.restaurant.core.utils.FileHelper
 import junit.framework.TestCase.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,7 +18,7 @@ class RestaurantRepositoryTest : BaseUnitTest() {
 
     private val exception = NullPointerException("there is no file to load")
     private val fileHelper : FileHelper = mock()
-    private val repository = RestaurantRepository(fileHelper)
+    private val repository : RestaurantRepository = RestaurantRepositoryImpl(fileHelper)
 
     @Test
     fun testLoadingRestaurantsSuccess() = runTest {
@@ -26,8 +27,8 @@ class RestaurantRepositoryTest : BaseUnitTest() {
         }
         val result = repository.restaurantList().first()
         assertTrue(result.isSuccess)
-        val list = result.getOrNull() ?: listOf()
-        assertEquals(3, list.size)
+        val list = result.getOrNull()
+        assertEquals(3, list?.size)
     }
 
     @Test

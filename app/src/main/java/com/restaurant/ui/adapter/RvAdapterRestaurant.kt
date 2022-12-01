@@ -22,7 +22,7 @@ class RvAdapterRestaurant : ListAdapter<Restaurant, RvAdapterRestaurant.Holder>(
         holder.bind(getItem(position))
     }
 
-    inner class Holder(val binding: LayoutItemRowRestaurantBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class Holder(private val binding: LayoutItemRowRestaurantBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(restaurant: Restaurant){
             binding.data = restaurant
         }

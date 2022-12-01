@@ -1,4 +1,4 @@
-package com.restaurant
+package com.restaurant.base
 
 import android.view.View
 import android.view.ViewGroup
