@@ -5,13 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
+import java.io.InputStreamReader
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-
+@ExperimentalCoroutinesApi
 open class BaseUnitTest {
 
-    @ExperimentalCoroutinesApi
     @get:Rule val mainRule = MainDispatcherRule()
 
     @get:Rule var instanceTaskExecutorRule = InstantTaskExecutorRule()
@@ -26,5 +26,15 @@ open class BaseUnitTest {
         observeForever(observer)
         latch.await(2, TimeUnit.SECONDS)
         return value
+    }
+
+    fun loadingResource(name : String) : String {
+        var content = ""
+        this.javaClass.classLoader?.let {
+            val reader = InputStreamReader(it.getResourceAsStream(name))
+            content = reader.readText()
+            reader.close()
+        }
+        return content
     }
 }
