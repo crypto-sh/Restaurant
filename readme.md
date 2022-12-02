@@ -8,11 +8,13 @@ I have used the TDD methodology for implementing the project.
 # Architecture
 The Project architecture is MVVM. 
 
+
 ![1*BqFy9rd2_hCtOeHgUY72gg](https://user-images.githubusercontent.com/38876424/205403060-dc6c08ae-f707-471b-a571-5cb6ca6bca6e.png)
 
-Model     -> all model are in com.restaurant.core.dto
-View      -> RestaurantActivity, RvAdapterRestaurant
-ViewModel -> RestaurantViewModel
+
+- Model     -> all model are in com.restaurant.core.dto
+- View      -> RestaurantActivity, RvAdapterRestaurant
+- ViewModel -> RestaurantViewModel
 
 we will request all data from RestaurantRepository by the view state from ViewModel.
 
@@ -45,13 +47,11 @@ We have just one instrument test for the Restaurant feature. here is the followi
     - test of saving the latest sort which is requested by load list method.
 
 
-Prerequisites
-=============
+## Prerequisites
 
-    - Android Studio 7.3.1
-    - Gradle version 7.4
-    - Kotlin version 1.7.10
+   Android Studio 7.3.1
+   Gradle version 7.4
+   Kotlin version 1.7.10
 
 ## Author
-
 [Ali Shatergholi](https://github.com/alishatergholi)
