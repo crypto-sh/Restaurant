@@ -6,6 +6,8 @@ import com.restaurant.core.dto.Restaurant
 import com.restaurant.core.dto.SortType
 import com.restaurant.core.repository.RestaurantRepository
 import com.restaurant.core.utils.SingleLiveEvent
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class RestaurantViewModel(
@@ -25,7 +27,10 @@ class RestaurantViewModel(
         viewModelScope.launch {
             _loading.postValue(true)
             repository.restaurantList(query, sort)
-                .collect {
+                .catch {
+                    _error.postValue(it)
+                }
+                .collectLatest {
                     _loading.postValue(false)
                     if (it.isSuccess) {
                         _list.postValue(it.getOrNull())

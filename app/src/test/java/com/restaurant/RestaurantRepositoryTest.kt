@@ -92,18 +92,18 @@ class RestaurantRepositoryTest : BaseUnitTest() {
         assertEquals(SortType.OpenStatus, sort)
     }
 
-    private fun mockRestaurantsSuccessCase() {
-        whenever(fileHelper.load(any())).then {
-            loadingResource("sample_restaurant_with_three_items_success.json")
-        }
-        whenever(preferenceHandler.getString(any(), any())).thenReturn("")
-    }
-
     @Test
     fun testLoadingRestaurantsFail() = runTest {
         whenever(fileHelper.load(any())).thenThrow(exception)
         val result = repository.restaurantList().first()
         assertFalse(result.isSuccess)
         assertEquals(exception, result.exceptionOrNull())
+    }
+
+    private fun mockRestaurantsSuccessCase() {
+        whenever(fileHelper.load(any())).then {
+            loadingResource("sample_restaurant_with_three_items_success.json")
+        }
+        whenever(preferenceHandler.getString(any(), any())).thenReturn("")
     }
 }

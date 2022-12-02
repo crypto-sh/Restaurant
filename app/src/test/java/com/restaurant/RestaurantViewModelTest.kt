@@ -7,27 +7,26 @@ import com.restaurant.ui.viewModel.RestaurantViewModel
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.times
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 
 @ExperimentalCoroutinesApi
 class RestaurantViewModelTest : BaseUnitTest() {
 
     private val expected = createRestaurants(5)
     private val exception = NullPointerException("There is no file exist like the one you want.")
-    private var repository : RestaurantRepository = mock()
+    private var repository: RestaurantRepository = mock()
 
     private val viewModel = RestaurantViewModel(repository)
 
     @Test
     fun testCallingRepositoryWithLoadingRestaurants() = runTest {
         viewModel.onCreate(mock())
-        verify(repository, times(1)).restaurantList()
+        verify(repository, times(1)).restaurantList(any(), any())
     }
 
     @Test
