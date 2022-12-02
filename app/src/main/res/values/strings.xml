@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Restaurant</string>
     <string name="general_error">Runtime error, please try later.</string>
+    <string name="restaurant_name_search">Restaurant name…</string>
 </resources>

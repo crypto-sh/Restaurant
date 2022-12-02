@@ -5,6 +5,7 @@ import com.restaurant.core.base.BaseViewModel
 import com.restaurant.core.dto.Restaurant
 import com.restaurant.core.repository.RestaurantRepository
 import com.restaurant.core.utils.SingleLiveEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantViewModel(
@@ -17,9 +18,15 @@ class RestaurantViewModel(
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-        _loading.postValue(true)
+        loadRestaurants()
+    }
+
+
+
+    fun loadRestaurants(query : String = "") {
         viewModelScope.launch {
-            repository.restaurantList()
+            _loading.postValue(true)
+            repository.restaurantList(query)
                 .collect {
                     _loading.postValue(false)
                     if (it.isSuccess) {

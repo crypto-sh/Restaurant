@@ -22,13 +22,27 @@ class RestaurantRepositoryTest : BaseUnitTest() {
 
     @Test
     fun testLoadingRestaurantsSuccess() = runTest {
-        whenever(fileHelper.load(any())).then {
-            loadingResource("sample_restaurant_with_three_items_success.json")
-        }
+        mockRestaurantsSuccessCase()
         val result = repository.restaurantList().first()
         assertTrue(result.isSuccess)
         val list = result.getOrNull()
         assertEquals(3, list?.size)
+    }
+
+
+    @Test
+    fun testLoadingRestaurantsFilterSuccess() = runTest {
+        mockRestaurantsSuccessCase()
+        val result = repository.restaurantList("Royal").first()
+        assertTrue(result.isSuccess)
+        val list = result.getOrNull()
+        assertEquals(1, list?.size)
+    }
+
+    private fun mockRestaurantsSuccessCase() {
+        whenever(fileHelper.load(any())).then {
+            loadingResource("sample_restaurant_with_three_items_success.json")
+        }
     }
 
     @Test
