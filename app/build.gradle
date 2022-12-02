@@ -46,6 +46,7 @@ dependencies {
      * Androidx
      */
     implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation 'androidx.preference:preference:1.2.0'
 
     /**
      * lifecycle
@@ -73,7 +74,7 @@ dependencies {
      */
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    debugImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
 
     /**
      * dagger

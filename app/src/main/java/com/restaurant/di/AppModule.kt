@@ -4,6 +4,8 @@ import android.app.Application
 import com.restaurant.core.repository.RestaurantRepository
 import com.restaurant.core.repository.impl.RestaurantRepositoryImpl
 import com.restaurant.core.utils.FileHelper
+import com.restaurant.core.utils.PreferenceHandler
+import com.restaurant.core.utils.PreferenceHandlerImpl
 import com.restaurant.ui.viewModel.RestaurantViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -21,8 +23,13 @@ object AppModule {
     }
 
     @Provides
-    fun provideRestaurantRepository(fileHelper: FileHelper): RestaurantRepository {
-        return RestaurantRepositoryImpl(fileHelper)
+    fun providePreferenceHandler(application: Application): PreferenceHandler {
+        return PreferenceHandlerImpl(application)
+    }
+
+    @Provides
+    fun provideRestaurantRepository(fileHelper: FileHelper, preferenceHandler: PreferenceHandler): RestaurantRepository {
+        return RestaurantRepositoryImpl(fileHelper, preferenceHandler)
     }
 
     @Provides

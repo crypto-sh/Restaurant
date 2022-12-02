@@ -38,5 +38,18 @@
       "deliveryCosts": 150,
       "minCost": 2500
     }
+  }, {
+    "name": "Sushi One",
+    "status": "open",
+    "sortingValues": {
+      "bestMatch": 3.0,
+      "newest": 238.0,
+      "ratingAverage": 4.0,
+      "distance": 1618,
+      "popularity": 23.0,
+      "averageProductPrice": 1285,
+      "deliveryCosts": 0,
+      "minCost": 1200
+    }
   }]
 }

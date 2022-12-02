@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Restaurant</string>
     <string name="general_error">Runtime error, please try later.</string>
-    <string name="restaurant_name_search">Restaurant name…</string>
+    <string name="menu_search_hint">Restaurant name…</string>
+    <string name="menu_sort">sort</string>
+    <string name="popup_menu_title">Select your sort type</string>
+
+    <string name="popup_menu_show_open_status">Open status</string>
+    <string name="popup_menu_desc_popular">Popularity descending</string>
+    <string name="popup_menu_asc_distance">Distance ascending</string>
 </resources>

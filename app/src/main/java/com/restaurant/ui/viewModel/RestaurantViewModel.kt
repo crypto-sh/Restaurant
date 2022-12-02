@@ -3,9 +3,9 @@ package com.restaurant.ui.viewModel
 import androidx.lifecycle.*
 import com.restaurant.core.base.BaseViewModel
 import com.restaurant.core.dto.Restaurant
+import com.restaurant.core.dto.SortType
 import com.restaurant.core.repository.RestaurantRepository
 import com.restaurant.core.utils.SingleLiveEvent
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantViewModel(
@@ -21,12 +21,10 @@ class RestaurantViewModel(
         loadRestaurants()
     }
 
-
-
-    fun loadRestaurants(query : String = "") {
+    fun loadRestaurants(query : String = "", sort : SortType = SortType.Undefine) {
         viewModelScope.launch {
             _loading.postValue(true)
-            repository.restaurantList(query)
+            repository.restaurantList(query, sort)
                 .collect {
                     _loading.postValue(false)
                     if (it.isSuccess) {

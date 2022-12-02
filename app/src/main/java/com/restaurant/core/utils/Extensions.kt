@@ -31,3 +31,5 @@ fun MenuItem?.handleSearchView(onTextChanged: (String) -> Unit) {
         }
     })
 }
+
+operator fun Number.compareTo(other: Number) = this.toDouble().compareTo(other.toDouble())

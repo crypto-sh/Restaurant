@@ -3,10 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/search_menu"
+        android:id="@+id/menu_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/restaurant_name_search"
+        android:title="@string/menu_search_hint"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
+
+    <item
+        android:id="@+id/menu_sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/menu_sort"
+        android:visible="true"
+        app:showAsAction="ifRoom" >
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/popup_menu_open"
+                    android:title="@string/popup_menu_show_open_status" />
+                <item
+                    android:id="@+id/popup_menu_popular"
+                    android:title="@string/popup_menu_desc_popular" />
+                <item
+                    android:id="@+id/popup_menu_distance"
+                    android:title="@string/popup_menu_asc_distance" />
+            </group>
+        </menu>
+    </item>
+
 
 </menu>
